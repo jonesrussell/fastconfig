@@ -16,6 +16,10 @@
       {
         "command": "fastconfig.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "fastconfig.updateTimes",
+        "title": "Update Config Times"
       }
     ]
   },
@@ -45,5 +49,8 @@
     "typescript": "^5.7.3",
     "@vscode/test-cli": "^0.0.10",
     "@vscode/test-electron": "^2.4.1"
+  },
+  "dependencies": {
+    "yaml": "^2.4.1"
   }
 }
