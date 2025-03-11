@@ -31,10 +31,10 @@ export function activate(context: vscode.ExtensionContext) {
 				throw new Error('No workspace folder found');
 			}
 
-			// Read the config.yaml file
-			const configPath = path.join(workspaceFolder.uri.fsPath, 'config.yaml');
-			const configContent = fs.readFileSync(configPath, 'utf8');
-			const config = yaml.parse(configContent);
+			// Read the sources.yml file
+			const sourcesPath = path.join(workspaceFolder.uri.fsPath, 'sources.yml');
+			const sourcesContent = fs.readFileSync(sourcesPath, 'utf8');
+			const config = yaml.parse(sourcesContent);
 
 			// Get current time
 			const now = new Date();
@@ -65,8 +65,8 @@ export function activate(context: vscode.ExtensionContext) {
 			}
 
 			// Write the updated config back to file
-			fs.writeFileSync(configPath, yaml.stringify(config));
-			vscode.window.showInformationMessage('Time fields updated successfully in config.yaml');
+			fs.writeFileSync(sourcesPath, yaml.stringify(config));
+			vscode.window.showInformationMessage('Time fields updated successfully in sources.yml');
 		} catch (error) {
 			vscode.window.showErrorMessage(`Error updating times: ${error}`);
 		}

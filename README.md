@@ -1,71 +1,68 @@
-# fastconfig README
+# FastConfig - YAML Time Updater
 
-This is the README for your extension "fastconfig". After writing up a brief description, we recommend including the following sections.
+A VS Code extension that helps you quickly update time fields in your YAML configuration files. This extension is particularly useful for managing scheduled tasks or batch operations where you need to set sequential times across multiple sources.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+This extension provides a simple command to automatically update time fields in your YAML configuration files. It:
 
-For example if there is an image subfolder under your extension project workspace:
+- Updates time fields for multiple sources sequentially
+- Starts from current time + 1 minute
+- Increments each source by 1 minute
+- Sets two times per source (12 hours apart)
+- Handles time overflow correctly (minutes > 60, hours > 24)
 
-\!\[feature X\]\(images/feature-x.png\)
+For example, if you run the command at 14:30, your sources.yml will be updated like this:
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+```yaml
+sources:
+  - name: "Source 1"
+    time:
+      - "14:31"
+      - "02:31"
+  - name: "Source 2"
+    time:
+      - "14:32"
+      - "02:32"
+  - name: "Source 3"
+    time:
+      - "14:33"
+      - "02:33"
+```
+
+## Usage
+
+1. Open your workspace containing the `sources.yml` file
+2. Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on macOS) to open the command palette
+3. Type "Update Config Times" and select the command
+4. Your sources file will be automatically updated with new times
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- VS Code 1.98.0 or higher
+- A YAML configuration file named `sources.yml` in your workspace
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+This extension currently doesn't require any additional settings.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+None at the moment.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 0.0.1
 
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+Initial release of FastConfig:
+- Add command to update time fields in YAML configuration
+- Support for multiple sources with incremental timing
+- Automatic 12-hour offset for second time field
 
 ---
 
-## Following extension guidelines
+## Contributing
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+Feel free to open issues or submit pull requests on our repository.
 
 **Enjoy!**
