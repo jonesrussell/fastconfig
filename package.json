@@ -14,10 +14,6 @@
   "contributes": {
     "commands": [
       {
-        "command": "fastconfig.helloWorld",
-        "title": "Hello World"
-      },
-      {
         "command": "fastconfig.updateTimes",
         "title": "Update Config Times"
       }
